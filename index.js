@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         ],
         layout: {
-            name: 'grid',
-            rows: 2
+            name: 'cose', // Alterado para 'cose' para uma distribuição automática dos vértices
+            animate: true
         }
     });
 
@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mst.forEach(aresta => {
                 cy.add({ data: { id: aresta.origem + aresta.destino, source: aresta.origem, target: aresta.destino, weight: aresta.peso } });
             });
+            cy.layout({ name: 'cose', animate: true }).run(); // Reaplica o layout após a adição da árvore geradora mínima
             console.log("Árvore Geradora Mínima calculada e exibida.");
             alert("Árvore Geradora Mínima calculada e exibida.");
         } else {
@@ -223,11 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { origem: 'B', destino: 'H', peso: 11 },
         { origem: 'B', destino: 'C', peso: 8 },
         { origem: 'B', destino: 'D', peso: 7 },
-        { origem: 'C', destino: 'D', peso: 7 },
-        { origem: 'C', destino: 'F', peso: 4 },
-        { origem: 'C', destino: 'E', peso: 3 },
-        { origem: 'D', destino: 'E', peso: 9 },
-        { origem: 'D', destino: 'F', peso: 14 },
+        { origem: 'C', destino: 'D', peso: 9 },
+        { origem: 'C', destino: 'E', peso: 4 },
+        { origem: 'D', destino: 'E', peso: 10 },
         { origem: 'E', destino: 'F', peso: 10 },
         { origem: 'F', destino: 'G', peso: 2 },
         { origem: 'G', destino: 'H', peso: 1 },
@@ -250,6 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
         grafo.adicionarAresta(verticeOrigem, verticeDestino, peso);
         cy.add({ data: { id: origem + destino, source: origem, target: destino, weight: peso } });
     });
+
+    cy.layout({ name: 'cose', animate: true }).run(); // Executa o layout após a adição inicial dos vértices e arestas
 
     console.log("Grafo inicial adicionado.");
 });
