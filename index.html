@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafo Interativo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.0/cytoscape.min.js"></script>
+    <style>
+        #cy {
+            width: 1000px;
+            height: 600px;
+            border: 1px solid #ccc;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Grafo Interativo</h1>
+    <div id="cy"></div>
+    <div style="text-align: center;">
+        <button onclick="adicionarVertice()">Adicionar Vértice</button>
+        <button onclick="removerVertice()">Remover Vértice</button>
+        <button onclick="adicionarAresta()">Adicionar Aresta</button>
+        <button onclick="removerAresta()">Remover Aresta</button>
+        <button onclick="calcularMenorCaminho()">Calcular Menor Caminho</button>
+        <button onclick="calcularArvoreGeradoraMinima()">Calcular Árvore Geradora Mínima</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
