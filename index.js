@@ -28,7 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         layout: {
             name: 'cose', // Alterado para 'cose' para uma distribuição automática dos vértices
-            animate: true
+            animate: true,
+            padding: 10,
+            fit: true,
+            nodeOverlap: 20,
+            nodeRepulsion: 4000,
+            idealEdgeLength: 100,
+            edgeElasticity: 100
         }
     });
 
