@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ],
         layout: {
             name: 'grid',
-            rows: 1
+            rows: 2
         }
     });
 
@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const grafo = new Grafo();
 
+    // Funções para adicionar e remover vértices e arestas
     window.adicionarVertice = function() {
         const id = prompt("Digite o ID do novo vértice:");
         console.log(`Prompt returned: ${id}`);
@@ -212,4 +213,38 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Vértice inicial não encontrado.");
         }
     };
+
+    // Adiciona vértices e arestas iniciais
+    const verticesIniciais = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const arestasIniciais = [
+        { origem: 'A', destino: 'B', peso: 4 },
+        { origem: 'A', destino: 'H', peso: 8 },
+        { origem: 'B', destino: 'H', peso: 11 },
+        { origem: 'B', destino: 'C', peso: 8 },
+        { origem: 'C', destino: 'D', peso: 7 },
+        { origem: 'C', destino: 'F', peso: 4 },
+        { origem: 'C', destino: 'I', peso: 2 },
+        { origem: 'D', destino: 'E', peso: 9 },
+        { origem: 'D', destino: 'F', peso: 14 },
+        { origem: 'E', destino: 'F', peso: 10 },
+        { origem: 'F', destino: 'G', peso: 2 },
+        { origem: 'G', destino: 'H', peso: 1 },
+        { origem: 'G', destino: 'I', peso: 6 },
+        { origem: 'H', destino: 'I', peso: 7 }
+    ];
+
+    verticesIniciais.forEach(id => {
+        const vertice = new Vertice(id);
+        grafo.adicionarVertice(vertice);
+        cy.add({ data: { id } });
+    });
+
+    arestasIniciais.forEach(({ origem, destino, peso }) => {
+        const verticeOrigem = grafo.vertices[origem];
+        const verticeDestino = grafo.vertices[destino];
+        grafo.adicionarAresta(verticeOrigem, verticeDestino, peso);
+        cy.add({ data: { id: origem + destino, source: origem, target: destino, weight: peso } });
+    });
+
+    console.log("Grafo inicial adicionado.");
 });
