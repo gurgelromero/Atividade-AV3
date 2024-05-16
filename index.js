@@ -15,17 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     'text-outline-color': '#666'
                 }
             },
+            
             {
-                {
-                    selector: 'edge',
-                    style: {
-                        'width': 3,
-                        'line-color': '#ccc',
-                        'curve-style': 'bezier'
-                    }
+                selector: 'edge',
+                style: {
+                    'width': 3,
+                    'line-color': '#ccc',
+                    'curve-style': 'bezier',
+                    'label': 'data(weight)',
+                    'font-size': '12px',
+                    'text-valign': 'center',
+                    'color': '#333'
                 }
-                
             }
+            
+                
+            
         ],
         layout: {
             name: 'cose', // Alterado para 'cose' para uma distribuição automática dos vértices
