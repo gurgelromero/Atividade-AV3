@@ -219,18 +219,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const arestasIniciais = [
         { origem: 'A', destino: 'B', peso: 4 },
         { origem: 'A', destino: 'H', peso: 8 },
+        { origem: 'A', destino: 'C', peso: 5 },
         { origem: 'B', destino: 'H', peso: 11 },
         { origem: 'B', destino: 'C', peso: 8 },
+        { origem: 'B', destino: 'D', peso: 7 },
         { origem: 'C', destino: 'D', peso: 7 },
         { origem: 'C', destino: 'F', peso: 4 },
-        { origem: 'C', destino: 'I', peso: 2 },
+        { origem: 'C', destino: 'E', peso: 3 },
         { origem: 'D', destino: 'E', peso: 9 },
         { origem: 'D', destino: 'F', peso: 14 },
         { origem: 'E', destino: 'F', peso: 10 },
         { origem: 'F', destino: 'G', peso: 2 },
         { origem: 'G', destino: 'H', peso: 1 },
         { origem: 'G', destino: 'I', peso: 6 },
-        { origem: 'H', destino: 'I', peso: 7 }
+        { origem: 'H', destino: 'I', peso: 7 },
+        { origem: 'A', destino: 'E', peso: 6 },
+        { origem: 'C', destino: 'G', peso: 2 },
+        { origem: 'B', destino: 'F', peso: 9 }
     ];
 
     verticesIniciais.forEach(id => {
