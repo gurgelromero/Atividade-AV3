@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return mst;
         }
         
+        
+        
     }
 
     class PriorityQueue {
@@ -203,7 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
 
-            
+
+
+    let mst; // Variável para armazenar a árvore geradora mínima
 
     window.calcularArvoreGeradoraMinima = function() {
         const inicio = prompt("Digite o ID do vértice inicial:");
@@ -229,41 +233,86 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
+    
+    
+
+function pintarArvore() {
+    // Remove a cor vermelha de todas as arestas
+    cy.edges().forEach(edge => {
+        edge.style('line-color', '#ccc');
+    });
+
+    // Pinta as arestas da árvore geradora mínima de vermelho
+    mst.forEach(aresta => {
+        const edge = cy.getElementById(aresta.origem + aresta.destino);
+        if (edge.length) {
+            edge.style('line-color', 'red'); // Pinta a aresta de vermelho
+        }
+    });
+}
+
+window.proximoPasso = function() {
+    if (passo < mst.length) {
+        pintarArvore(); // Pinta a árvore geradora mínima
+        passo++;
+    }
+};
+
+
+function pintarProximoPasso() {
+    if (passo < mst.length) {
+        const aresta = mst[passo];
+        const edge = cy.getElementById(aresta.origem + aresta.destino);
+        if (edge.length) {
+            edge.style('line-color', 'red'); // Pinta a aresta de vermelho
+        }
+        passo++;
+    }
+}
+
+window.proximoPasso = function() {
+    pintarProximoPasso(); // Pinta o próximo passo quando o usuário clica no botão
+};
+
+    
+    
 
     // Adiciona vértices e arestas iniciais
-    const verticesIniciais = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-    const arestasIniciais = [
-        { origem: 'A', destino: 'B', peso: 4 },
-        { origem: 'A', destino: 'H', peso: 8 },
-        { origem: 'A', destino: 'C', peso: 5 },
-        { origem: 'B', destino: 'H', peso: 11 },
-        { origem: 'B', destino: 'C', peso: 8 },
-        { origem: 'B', destino: 'D', peso: 7 },
-        { origem: 'C', destino: 'D', peso: 9 },
-        { origem: 'C', destino: 'E', peso: 4 },
-        { origem: 'D', destino: 'E', peso: 10 },
-        { origem: 'E', destino: 'F', peso: 10 },
-        { origem: 'F', destino: 'G', peso: 2 },
-        { origem: 'G', destino: 'H', peso: 1 },
-        { origem: 'G', destino: 'I', peso: 6 },
-        { origem: 'H', destino: 'I', peso: 7 },
-        { origem: 'A', destino: 'E', peso: 6 },
-        { origem: 'C', destino: 'G', peso: 2 },
-        { origem: 'B', destino: 'F', peso: 9 }
-    ];
+    // Adiciona vértices e arestas iniciais
+const verticesIniciais = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+const arestasIniciais = [
+    { origem: 'A', destino: 'B', peso: 4 },
+    { origem: 'A', destino: 'H', peso: 8 },
+    { origem: 'A', destino: 'C', peso: 5 },
+    { origem: 'B', destino: 'H', peso: 11 },
+    { origem: 'B', destino: 'C', peso: 8 },
+    { origem: 'B', destino: 'D', peso: 7 },
+    { origem: 'C', destino: 'D', peso: 9 },
+    { origem: 'C', destino: 'E', peso: 4 },
+    { origem: 'D', destino: 'E', peso: 10 },
+    { origem: 'E', destino: 'F', peso: 10 },
+    { origem: 'F', destino: 'G', peso: 2 },
+    { origem: 'G', destino: 'H', peso: 1 },
+    { origem: 'G', destino: 'I', peso: 6 },
+    { origem: 'H', destino: 'I', peso: 7 },
+    { origem: 'A', destino: 'E', peso: 6 },
+    { origem: 'C', destino: 'G', peso: 2 },
+    { origem: 'B', destino: 'F', peso: 9 }
+];
 
-    verticesIniciais.forEach(id => {
-        const vertice = new Vertice(id);
-        grafo.adicionarVertice(vertice);
-        cy.add({ data: { id } });
-    });
+verticesIniciais.forEach(id => {
+    const vertice = new Vertice(id);
+    grafo.adicionarVertice(vertice);
+    cy.add({ data: { id } });
+});
 
-    arestasIniciais.forEach(({ origem, destino, peso }) => {
-        const verticeOrigem = grafo.vertices[origem];
-        const verticeDestino = grafo.vertices[destino];
-        grafo.adicionarAresta(verticeOrigem, verticeDestino, peso);
-        cy.add({ data: { id: origem + destino, source: origem, target: destino, weight: peso } });
-    });
+arestasIniciais.forEach(({ origem, destino, peso }) => {
+    const verticeOrigem = grafo.vertices[origem];
+    const verticeDestino = grafo.vertices[destino];
+    grafo.adicionarAresta(verticeOrigem, verticeDestino, peso);
+    cy.add({ data: { id: origem + destino, source: origem, target: destino, weight: peso } });
+});
+
 
     cy.layout({ name: 'cose', animate: true }).run(); // Executa o layout após a adição inicial dos vértices e arestas
 
