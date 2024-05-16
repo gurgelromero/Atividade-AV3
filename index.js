@@ -203,18 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
 
-    window.calcularMenorCaminho = function() {
-        const origem = prompt("Digite o ID do vértice de origem:");
-        const destino = prompt("Digite o ID do vértice de destino:");
-        if (origem && destino && grafo.vertices[origem] && grafo.vertices[destino]) {
-            const distancia = grafo.dijkstra(origem, destino);
-            console.log(`A menor distância de ${origem} para ${destino} é ${distancia}.`);
-            alert(`A menor distância de ${origem} para ${destino} é ${distancia}.`);
-        } else {
-            console.log('Dados inválidos ou vértices não encontrados.');
-            alert("Dados inválidos ou vértices não encontrados.");
-        }
-    };
+            
 
     window.calcularArvoreGeradoraMinima = function() {
         const inicio = prompt("Digite o ID do vértice inicial:");
