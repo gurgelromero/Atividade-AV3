@@ -16,14 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
-                selector: 'edge',
-                style: {
-                    'width': 3,
-                    'line-color': '#ccc',
-                    'target-arrow-color': '#ccc',
-                    'target-arrow-shape': 'triangle',
-                    'curve-style': 'bezier'
+                {
+                    selector: 'edge',
+                    style: {
+                        'width': 3,
+                        'line-color': '#ccc',
+                        'curve-style': 'bezier'
+                    }
                 }
+                
             }
         ],
         layout: {
