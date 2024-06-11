@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         sort() {
-            this.values.sort((a, b) => a.prioridade - b.prioridade);
+            this.values.sort((a, b) => a.prioridade === b.prioridade ? a.vertice.localeCompare(b.vertice) : a.prioridade - b.prioridade);
         }
     }
 
